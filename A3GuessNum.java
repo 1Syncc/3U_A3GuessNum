@@ -1,27 +1,79 @@
 /*
-*Name:
-*Date:
-*Desription:
+Thoren Herr
+November 24th 2021
+This program is a number guessing game where the user gets 5 trys to guess the number and if they are close the computer says "Warm" but if they are far from the number the computer says "Cold"
 */
 
 import java.util.*;
 
-public A3GuessNum{
+public class A3GuessNum
+{
   
-  
-  //main method
   public static void main(String[] arg){
-    // Make a scanner and Random Object.
     Scanner input = new Scanner(System.in);
     Random numGenerator = new Random();
-    
-    // Generate a random number from 0-5.
-    int answer = numGenerator.nextInt(6);
-    int guess = -1; // default guess num.
-    
+    int randomNum = numGenerator.nextInt(100) + 1;
+    int tries = 1; 
+    int guess;
+    String playAgain;
+
+    System.out.println("----------------------------------------------");
+    System.out.println("          Welcome to GuessNum Game!");
+    System.out.println("             Here are the rules:");
+    System.out.println(" ");
+    System.out.println("You have 5 guesses");
+    System.out.println("Pick a number between 0 and 100");
+    System.out.println("If your guess is more than 25 away = cold");
+    System.out.println("If your guess is more than 50 away = freezing");
+    System.out.println("If your guess is less than 10 away = warm");
+    System.out.println("If your guess is less than 5 away = Hot ");
+    System.out.println(" ");
+    System.out.println("----------------------------------------------");
+    System.out.println("");
+
+
+    while(tries <= 5){
+
+    System.out.println("This is try number " + tries);
     System.out.println("Guess a number");
-    int guess = input.nextInt();  
-    
-      
+    guess = input.nextInt();  
+    tries += 1;
+
+    int difference = guess - randomNum;
+
+    if(difference <= -1){
+
+      difference *= -1;
+
+    }
+
+    if(guess > 100) {
+
+      System.out.println("Error: Number over 100");
+
+    }else if(guess == randomNum){
+
+      System.out.println("Correct!");
+      break; 
+
+    }else if(difference >= 25 && difference <= 50) {
+
+      System.out.println("Cold");
+
+    }else if(difference > 50){
+
+      System.out.println("Freezing");
+
+    }else if(difference >= 10 && difference < 25){
+
+      System.out.println("Warm");
+
+    }else if(difference > 0  && difference < 10){
+
+      System.out.println("Hot");
+
+    }
+
+    }//close while loop
   }// close main
 }
