@@ -1,7 +1,7 @@
 /*
 Thoren Herr
-November 24th 2021
-This program is a number guessing game where the user gets 5 trys to guess the number and if they are close the computer says "Warm" but if they are far from the number the computer says "Cold"
+November 25th 2021
+This program is a number guessing game where the user gets 5 trys to guess the number and if they are close the computer says "Warm" but if they are far from the number the computer says "Cold". When the game ends, the program asks the user if they want to continue or stop.  If the user says yes, the program clears the console and restarts the game. If the user inputs a String or Char instead of a int, the program says "Error" and ends.
 */
 
 import java.util.*;
@@ -15,8 +15,10 @@ public class A3GuessNum
     
     int goAgain = 0;
 
+    
+
     do{
-    int randomNum = numGenerator.nextInt(100) + 1;
+    int randomNum = numGenerator.nextInt(500) + 1;
     int tries = 1; 
     int guess;
 
@@ -25,7 +27,7 @@ public class A3GuessNum
     System.out.println("             Here are the rules:");
     System.out.println(" ");
     System.out.println("You have 5 guesses");
-    System.out.println("Pick a number between 0 and 100");
+    System.out.println("Pick a number between 0 and 500");
     System.out.println("If your guess is more than 25 away = cold");
     System.out.println("If your guess is more than 50 away = freezing");
     System.out.println("If your guess is more than 10 away = warm");
@@ -37,10 +39,17 @@ public class A3GuessNum
 
     while(tries <= 5){
 
+      try{
     System.out.println("This is try number " + tries);
     System.out.println("Guess a number");
     guess = input.nextInt();
     input.nextLine();
+      } catch(InputMismatchException e){
+
+      System.out.println("Error: No Number Detected");
+      break;
+
+    }
     
     tries += 1;
 
@@ -50,11 +59,11 @@ public class A3GuessNum
 
       difference *= -1;
 
-    }
+    } 
 
-    if(guess > 100) {
+    if(guess > 500) {
 
-      System.out.println("Error: Number over 100");
+      System.out.println("Error: Number over 500");
 
     }else if(guess == randomNum){
 
@@ -87,6 +96,7 @@ public class A3GuessNum
     
     if(playAgain.equalsIgnoreCase("no")){
 
+      System.out.println("Thanks for playing!");
       break;
 
     } else if(playAgain.equalsIgnoreCase("yes")){
@@ -101,5 +111,6 @@ public class A3GuessNum
     }
     
     }while(true);// Close do-while loop
+    
   }// close main
 }
