@@ -22,6 +22,7 @@ public class A3GuessNum
     int tries = 1; 
     int guess;
 
+    //Game instructions
     System.out.println("----------------------------------------------");
     System.out.println("          Welcome to GuessNum Game!");
     System.out.println("             Here are the rules:");
@@ -36,24 +37,27 @@ public class A3GuessNum
     System.out.println("----------------------------------------------");
     System.out.println("");
 
-
+    //beguinning of while loop
     while(tries <= 5){
 
+      //try to make sure the user does not input letters
       try{
     System.out.println("This is try number " + tries);
     System.out.println("Guess a number");
+    System.out.println("");
     guess = input.nextInt();
     input.nextLine();
       } catch(InputMismatchException e){
 
       System.out.println("Error: No Number Detected");
+      System.out.println("");
       break;
 
     }
     
-    tries += 1;
+    tries += 1; //adds total number of tries
 
-    int difference = guess - randomNum;
+    int difference = guess - randomNum; //difference of the guess and randomNum to help                                          with hints
 
     if(difference <= -1){
 
@@ -64,27 +68,38 @@ public class A3GuessNum
     if(guess > 500) {
 
       System.out.println("Error: Number over 500");
+      System.out.println("");
 
     }else if(guess == randomNum){
 
+      System.out.println("");
       System.out.println("Correct!");
+      System.out.println("");
       break; 
 
     }else if(difference >= 25 && difference <= 50) {
 
+      System.out.println("");
       System.out.println("Cold");
+      System.out.println("");
 
     }else if(difference > 50){
 
+      System.out.println("");
       System.out.println("Freezing");
+      System.out.println("");
 
     }else if(difference >= 6 && difference < 25){
 
+      System.out.println("");
       System.out.println("Warm");
+      System.out.println("");
 
     }else if(difference > 0  && difference < 6){
 
+      System.out.println("");
       System.out.println("Hot");
+      System.out.println("");
 
     }
 
@@ -92,6 +107,7 @@ public class A3GuessNum
     }
     
     System.out.println("Do you want to play again?");
+    System.out.println("");
     String playAgain = input.nextLine();
     
     if(playAgain.equalsIgnoreCase("no")){
@@ -106,6 +122,7 @@ public class A3GuessNum
     }else{
 
       System.out.println("Error: Unkown Command, Please Restart");
+      System.out.println("");
       break;
 
     }
